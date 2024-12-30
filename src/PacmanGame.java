@@ -25,7 +25,7 @@ public class PacmanGame extends JPanel implements ActionListener, KeyListener {
     private int pacmanY ;
     private Direction pacDirection ;
     private Direction pacNewDirection ;
-    private int pacAnimation ; // animation speed
+    private int pacAnimation ; //animation speed
     private int pacLives ;
     private boolean isPacInvincible ;
 
@@ -94,8 +94,8 @@ public class PacmanGame extends JPanel implements ActionListener, KeyListener {
          pacmanY = 1;
          pacDirection = Direction.RIGHT;
          pacNewDirection = Direction.RIGHT;
-         pacAnimation = 0; // animation speed
-         pacLives = 5; // how many lives in total
+         pacAnimation = 0; //animation speed
+         pacLives = 5; //how many lives in total
          isPacInvincible = false;
          nextLevel = false;
          score   = 0;
@@ -429,20 +429,20 @@ public class PacmanGame extends JPanel implements ActionListener, KeyListener {
         int arcStartAngle = 0;
         int arcAngle = 270;
 
-        // Set the arc based on direction
+        //set the arc based on direction
         switch (pacDirection) {
             case UP:
-                arcStartAngle = 135; // Facing up
+                arcStartAngle = 135; //facing up
                 break;
             case DOWN:
-                arcStartAngle = 315;  // Facing down (corrected)
+                arcStartAngle = 315;  //facing down (corrected)
                 break;
             case LEFT:
-                arcStartAngle = 225;  // Facing left
+                arcStartAngle = 225;  //facing left
                 break;
             case RIGHT:
             default:
-                arcStartAngle = 45;  // Facing right (corrected)
+                arcStartAngle = 45;  //facing right (corrected)
                 break;
         }
 
@@ -603,20 +603,20 @@ public class PacmanGame extends JPanel implements ActionListener, KeyListener {
 
     private void pacmanDead() {
         walkTimer.stop();
-        ghostTimer.stop(); // Stop the game
+        ghostTimer.stop(); //stop the game
 
         sfx.playDeadSound();
     }
 
     private void resetPacman() {
         //walkTimer.stop();
-        //ghostTimer.stop(); // Stop the game
+        //ghostTimer.stop(); //stop the game
         pacmanX = 1;
         pacmanY = 1;
         pacDirection = Direction.RIGHT;
         pacNewDirection = Direction.RIGHT;
-        // Show game over message
-        // reset ghost location
+        //show game over message
+        //reset ghost location
         for (Ghost ghost : ghosts) {
             ghost.resetGhost();
         }
@@ -636,12 +636,12 @@ public class PacmanGame extends JPanel implements ActionListener, KeyListener {
         if (gamePaused) {
             gamePaused = false;
             walkTimer.start();
-            ghostTimer.start(); // Start the game
+            ghostTimer.start(); //start the game
             sfx.startBgm();
         } else {
             gamePaused = true;
             walkTimer.stop();
-            ghostTimer.stop(); // Stop the game
+            ghostTimer.stop(); //stop the game
             sfx.stopBgm();
             repaint(); //show the game paused message
         }
@@ -649,11 +649,11 @@ public class PacmanGame extends JPanel implements ActionListener, KeyListener {
 
     private void gameOver() {
         walkTimer.stop();
-        ghostTimer.stop(); // Stop the game
+        ghostTimer.stop(); //stop the game
         sfx.stopBgm();
         sfx.playGameOverSound();
         isGameOver = true;
-        // Show game over message
+        //show game over message
         JOptionPane.showMessageDialog(this, "Game Over! Final Score: " + score, "Game Over", JOptionPane.INFORMATION_MESSAGE);
     }
 
@@ -663,7 +663,7 @@ public class PacmanGame extends JPanel implements ActionListener, KeyListener {
         sfx.stopBgm();
         sfx.playYouWinSound();
         isGameOver = true;
-        // Show game over message
+        //show game over message
         JOptionPane.showMessageDialog(this, "You Win! Final Score: " + score, "You Win", JOptionPane.INFORMATION_MESSAGE);
     }
 
@@ -730,19 +730,19 @@ public class PacmanGame extends JPanel implements ActionListener, KeyListener {
     }
 
     private boolean foodExists() {
-        // calculate max score
+        //calculate max score
         for (int i = 0; i < food.length; i++) {
             for (int j = 0; j < food[i].length; j++) {
                 if (food[i][j]==1)
-                    return true; // Add each number to the sum
+                    return true; //add each number to the sum
             }
         }
         return false;
     }
 
     class Ghost {
-        int x; // Ghost's x position
-        int y; // Ghost's y position
+        int x; //ghost's x position
+        int y; //ghost's y position
         int resetX;
         int resetY;
         Direction ghostDirection;
@@ -768,8 +768,8 @@ public class PacmanGame extends JPanel implements ActionListener, KeyListener {
 
 
     class Flowers {
-        int x; // Ghost's x position
-        int y; // Ghost's y position
+        int x; //ghost's x position
+        int y; //ghost's y position
 
         Flowers(int startX, int startY) {
             this.x = startX;

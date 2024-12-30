@@ -19,43 +19,43 @@ public class LevelDesigner extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        // Initialize level array
+        //initialize level array
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
                 levelArray[i][j] = "."; // Empty space
             }
         }
 
-        // Create the grid panel
+        //create the grid panel
         JPanel gridPanel = new JPanel();
         gridPanel.setLayout(new GridLayout(SIZE, SIZE));
         JButton[][] buttons = new JButton[SIZE][SIZE];
 
-        // Create buttons for the grid
+        //create buttons for the grid
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
                 buttons[i][j] = new JButton();
                 buttons[i][j].setText(levelArray[i][j]);
                 buttons[i][j].setPreferredSize(new Dimension(30, 30));
 
-                final int x = i; // Row index
-                final int y = j; // Column index
+                final int x = i; //row index
+                final int y = j; //column index
 
-                // Mouse listener for each button to set it as the current cell
+                //mouse listener for each button to set it as the current cell
                 buttons[i][j].addActionListener(e -> {
                     currentRow = x;
                     currentCol = y;
-                    gridPanel.requestFocusInWindow(); // Request focus for key events
+                    gridPanel.requestFocusInWindow(); //request focus for key events
                 });
 
                 gridPanel.add(buttons[i][j]);
             }
         }
 
-        // Add grid panel to frame
+        //add grid panel to frame
         add(gridPanel, BorderLayout.CENTER);
 
-        // Key listener for placing walls and food
+        //key listener for placing walls and food
         gridPanel.setFocusable(true);
         gridPanel.requestFocusInWindow();
         gridPanel.addKeyListener(new KeyAdapter() {
@@ -64,16 +64,16 @@ public class LevelDesigner extends JFrame {
                 if (currentRow < SIZE && currentCol < SIZE) {
                     if (e.getKeyChar() == 'w' || e.getKeyChar() == 'W') {
                         placeItem(buttons, currentRow, currentCol, WALL);
-                        moveToNextCell(); // Move to the next cell after placing
+                        moveToNextCell(); //move to the next cell after placing
                     } else if (e.getKeyChar() == 'f' || e.getKeyChar() == 'F') {
                         placeItem(buttons, currentRow, currentCol, FOOD);
-                        moveToNextCell(); // Move to the next cell after placing
+                        moveToNextCell(); //move to the next cell after placing
                     }
                 }
             }
         });
 
-        // Create brush selection panel
+        //create brush selection panel
         JPanel brushPanel = new JPanel();
         JButton saveButton = new JButton("Save Level");
 
@@ -85,8 +85,8 @@ public class LevelDesigner extends JFrame {
     }
 
     private void placeItem(JButton[][] buttons, int row, int col, String item) {
-        levelArray[row][col] = item; // Set the current item
-        buttons[row][col].setText(item); // Update button text
+        levelArray[row][col] = item; //set the current item
+        buttons[row][col].setText(item); //update button text
     }
 
     private void moveToNextCell() {
@@ -96,8 +96,8 @@ public class LevelDesigner extends JFrame {
             currentRow++;
         }
         if (currentRow >= SIZE) {
-            currentRow = SIZE - 1; // Prevent going out of bounds
-            currentCol = SIZE - 1; // Stay in the last cell
+            currentRow = SIZE - 1; //prevent going out of bounds
+            currentCol = SIZE - 1; //stay in the last cell
         }
     }
 

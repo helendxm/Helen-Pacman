@@ -13,7 +13,7 @@ public class SoundEffect {
     private static String gameOverFile = "gameover.wav";
     private static String invincibleFile = "invincible.wav";
     private static String youwinFile = "youwin.wav";
-    private static Clip bgmClip;//special clip for bgm as we need to control play/stop
+    private static Clip bgmClip; //special clip for bgm as we need to control play/stop
 
     public static void main(String[] args) {
         SoundEffect sfx = new SoundEffect();
@@ -38,7 +38,7 @@ public class SoundEffect {
         String resourcePath = classLoader.getResource(bgmFile).getPath();
 
         try {
-            // Load the audio file
+            //load the audio file
             File audioFile = new File(resourcePath);
             System.out.print(audioFile.getAbsolutePath());
 
@@ -114,7 +114,7 @@ public class SoundEffect {
             if(isLoop) {
                 clip.loop(Clip.LOOP_CONTINUOUSLY);
             }
-            clip.start(); // Start playing the sound
+            clip.start(); //start playing sound
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
